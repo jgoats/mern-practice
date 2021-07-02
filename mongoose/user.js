@@ -1,7 +1,5 @@
 let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-
-let user = new Schema({
+let userSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -11,5 +9,9 @@ let user = new Schema({
         required: true
     }
 });
+// arg1 model name
+// arg2 schema 
+// arg3 collection name
+let User = mongoose.model('User', userSchema, "myusers");
 
-module.exports = mongoose.model("User", user);
+module.exports.User = User;
