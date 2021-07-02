@@ -31,7 +31,15 @@ app.get("/users", (req, res) => {
             }
         })
 })
-
+app.get("/users/:name", (req, res) => {
+    Users.findOne({ name: req.params.name })
+        .then((result) => {
+            res.json(result);
+        }).catch((err) => {
+            res.send(err);
+            console.log(err);
+        })
+})
 app.listen(PORT, (err) => {
     if (err) {
         console.log(err)
